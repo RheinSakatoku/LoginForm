@@ -85,14 +85,14 @@ export class LoginPageComponent implements OnInit {
   generateFigures(): void {
     this.figures = [];
     const figureTypes = ['circle', 'square', 'triangle'];
-    const figureCount = Math.floor(Math.random() * 5) + 1; // случайное количество фигурок
+    const figureCount = Math.floor(Math.random() * 5) + 1; 
     for (let i = 0; i < figureCount; i++) {
       const figureType = figureTypes[Math.floor(Math.random() * figureTypes.length)];
-      const x = Math.floor(Math.random() * 100); // случайная координата x
-      const y = Math.floor(Math.random() * 100); // случайная координата y
-      const size = Math.floor(Math.random() * 50) + 10; // случайный размер
-      const offsetX = Math.floor(Math.random() * 20) - 10; // случайный отступ по x (-10 до 10)
-      const offsetY = Math.floor(Math.random() * 20) - 10; // случайный отступ по y (-10 до 10)
+      const x = Math.floor(Math.random() * 100);
+      const y = Math.floor(Math.random() * 100); 
+      const size = Math.floor(Math.random() * 50) + 10; 
+      const offsetX = Math.floor(Math.random() * 20) - 10; 
+      const offsetY = Math.floor(Math.random() * 20) - 10; 
       this.figures.push({ type: figureType, x, y, size, offsetX, offsetY });
     }
   }
@@ -129,7 +129,7 @@ export class LoginPageComponent implements OnInit {
       let posX = Math.random() * 100;
       let posY = Math.random() * 100;
       let rotate = Math.random() * 360;
-      let animationDuration = 5000; // 2 sec
+      let animationDuration = 5000; 
       let startTime = performance.now();
       function animate() {
         const currentTime = performance.now();
