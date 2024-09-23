@@ -14,12 +14,5 @@ namespace LoginAPI.Models
         public string PhoneNumber { get; set; } = "";
         [Column(TypeName = "nvarchar(100)")]
         public string Name { get; set; } = "";
-       /*[ForeignKey("Message")]
-        public int message { get; set; }
-        public Message Message_Id { get; set; }
-
-        [ForeignKey("MessageThemes")]
-        public int MessageThemeId { get; set; }
-        public MessageThemes MT_ID { get; set; }*/
     }
 }
