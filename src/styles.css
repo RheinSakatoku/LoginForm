@@ -1,0 +1,89 @@
+/* You can add global styles to this file, and also import other style files */
+::selection
+{
+  background:#624126;
+  color:#f1d0a0;
+}
+.circle {
+  /*margin-left: 80px;*/
+  top: 0;
+  display: inline-block;
+  border-radius: 50%;
+  background-color: #00f329;
+  position: relative;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  width: 50px;
+  height: 50px;
+  opacity: 0.5;
+}
+
+.square {
+  /*margin-left: 20px;*/
+  top: 0;
+  display: inline-block;
+  background-color: #b80808;
+  position: relative;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  width: 50px;
+  height: 50px;
+  opacity: 0.5;
+}
+
+.triangle {
+  /*left: 0px;*/
+  top: 0;
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 30px 40px 30px;
+  border-color: transparent transparent #8400ff transparent;
+  position: relative;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  opacity: 0.5;
+}
+.captcha-letter {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 10px;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  position: relative;
+  transform: rotateX(45deg); /* добавляем поворот */
+  top: 0;
+  left: 20%;
+  display: inline-block;
+  opacity: 1;
+}
+.captchacont {
+  contain: content;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-grow: 1;
+  width: auto;
+}
+.bg-body-secondary {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.bg-body-secondary > * {
+  flex-basis: 0;
+  flex-grow: 1;
+  margin: 10px;
+}
+form.submitted input.ng-invalid
+{
+  background-color: #f56c6c;
+}
+
+.output
+{
+  background-color: #e6e6e6;
+}

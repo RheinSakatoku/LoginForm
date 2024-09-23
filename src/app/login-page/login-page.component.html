@@ -1,0 +1,102 @@
+<div class="bg-body-secondary text-center py-5 rounded-2">
+    <h1 class="display-6 fw-bold">Напишите нам</h1>
+</div>
+<form #form="ngForm" (submit) = "onSubmit(form)" [class.submitted] = "service.formSubmitted" novalidate>
+<div *ngIf="!clientFormVisible" class="bg-body-secondary py-5 rounded-2">
+    <table>
+      <tr>
+        <td>Ваше имя: </td>
+        <td><input id = "username" class="form-control form-control-lg"
+          placeholder="Ваше имя"
+          #name = "ngModel" name = "name"
+          [(ngModel)] = "service.formData.name"
+          required minlength="2"></td>
+      </tr>
+      <tr>
+        <td>Ваш Email:</td>
+        <td>
+          <input id="email" class="form-control form-control-lg"
+          placeholder="example@mail.ru"
+          #email="ngModel" name="email"
+          [(ngModel)]="service.formData.email"
+          required
+          pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,3}">
+    <div *ngIf="email.errors?.['pattern']">
+      <small class="text-danger">Неправильный формат email</small>
+    </div>
+        </td>
+      </tr>
+      <tr>
+        <td>Ваш телефон: </td>
+        <td><input id = "phone" class="form-control form-control-lg"
+          placeholder="+7(000)000-00-00"
+          #phoneNumber = "ngModel" name = "phoneNumber"
+          [(ngModel)] = "service.formData.phoneNumber"
+          required minlength="11" maxlength="12"
+          type="tel"
+          pattern="(^8|7|\+7)([0-9]{10})">
+          <div *ngIf="phoneNumber.errors?.['pattern']">
+            <small class="text-danger">Неправильный формат телефонного номера. Ваш телефон должен выглядеть так: +7(000)000-00-00. Вводить можно только цифры</small>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>Тема: </td>
+        <td>
+          <select name="selector" id="selector" class="form-control form-control-lg" #message_Theme="ngModel" [(ngModel)]="service.formData2.messageTheme" required>
+            <option disabled selected value="">Выберите тему</option>
+            <option *ngFor="let theme of themes" [ngValue]="theme">{{ theme.messageTheme }}</option>
+            <option value="nan">Свой вариант</option>
+          </select>
+          <input id="messagethemeInput" class="form-control form-control-lg"
+          placeholder="Ваш вариант"
+          (input)="onInputChange($event)"
+          *ngIf="service.formData2.messageTheme === 'nan'"
+          minlength="1">
+        </td>
+      </tr>
+      <tr>
+        <td>Ваше сообщение: </td>
+        <td><input id ="message" class="form-control form-control-lg"
+          placeholder="Ваше сообщение"
+          #message_Text = "ngModel" name = "message_Text"
+          [(ngModel)] = "service.formData1.message_Text"
+          required minlength="1"></td>
+      </tr>
+      <tr>
+        <td>Пройдите капчу</td>
+        <td>
+          <table>
+            <tr>
+              <div id = "captchacont" class ="captchacont">
+                <ng-container *ngFor="let letter of service.cptch.split('')">
+                  <span id ="captchaLetter" class="captcha-letter" #captchaLetter>{{ letter }}</span>
+                </ng-container>
+                <ng-container *ngFor="let figure of figures">
+                  <span class =".captchaFigure" [ngClass]="getFigureClass(figure.type)" #captchaFigure></span>
+                </ng-container>
+              </div>
+            </tr>
+            <tr>
+              <input class="captcha" id = "captchainput" placeholder="captcha">
+              <button class="btn btn-lg btn-success" (click)="updateCaptcha()" type="button">Обновить капчу</button>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+</div>
+<div *ngIf="clientFormVisible" class="output py-5 rounded-2">
+  <h2>Клиент</h2>
+  <p>Имя: {{ client?.name }}</p>
+  <p>Email: {{ client?.email }}</p>
+  <p>Телефон: {{ client?.phoneNumber }}</p>
+  <h3>Сообщения</h3>
+  <ul>
+    <li *ngFor="let message of client.messages">{{ message.message_Text }}</li>
+  </ul>
+</div>
+<div class ="d-grid">
+  <button class="btn btn-lg btn-success" type = "submit">Отправить</button>
+</div>
+</form>
