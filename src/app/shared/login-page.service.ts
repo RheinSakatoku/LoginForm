@@ -136,13 +136,13 @@ export class LoginPageService {
     this.formSubmitted = false;
   }
 
-  getMessage(clientId: number): Observable<MessagesModel[]> {
-    const params = new HttpParams()
-      .set('clientId', clientId.toString());
-
-    return this.http.get(this.messagesUrl, { params })
+  getMessage(client_Id: number): Observable<MessagesModel[]> {
+    return this.http.get(this.messagesUrl)
       .pipe(
-        map(response => response as MessagesModel[]),
+        map(response => {
+          const messages = response as MessagesModel[];
+          return messages.filter(message => message.client_Id === client_Id.toString());
+        }),
         catchError(err => of([])) // возвращаем пустой массив в случае ошибки
       );
   }
