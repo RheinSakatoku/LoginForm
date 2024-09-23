@@ -143,7 +143,7 @@ export class LoginPageService {
           const messages = response as MessagesModel[];
           return messages.filter(message => message.client_Id === client_Id.toString());
         }),
-        catchError(err => of([])) // возвращаем пустой массив в случае ошибки
+        catchError(err => of([]))
       );
   }
 
@@ -151,7 +151,7 @@ export class LoginPageService {
     return this.http.get(this.messageThemesUrl)
     .pipe(
       map(response => response as MessagesThemesModel[]),
-      catchError(err => of([])) // возвращаем пустой массив в случае ошибки
+      catchError(err => of([]))
     );
   }
 }
