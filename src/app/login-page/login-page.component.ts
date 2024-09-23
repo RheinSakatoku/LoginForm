@@ -340,7 +340,6 @@ export class LoginPageComponent implements OnInit {
                   }
                 }
               )
-              alert("nan + " + contactID);
               this.client =
               {
                 name: name,
