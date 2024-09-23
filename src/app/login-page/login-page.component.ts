@@ -161,7 +161,7 @@ export class LoginPageComponent implements OnInit {
     if (form.valid)
     {
       const check = this.renderer.selectRootElement('#captchainput');
-      if (this.service.cptch != check.value)
+      if (this.service.cptch == check.value)
       {
         const phoneNumber = form.value.phoneNumber;
         const email = form.value.email;
